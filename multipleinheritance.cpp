@@ -1,68 +1,75 @@
 #include<iostream>
-#include<conio.h>
-#include<stdio.h>
+using namespace std;
 class student
 {
     private:
-    char name[20];
-    int rno;
+    string name;
+    int rollno;
     public:
     void getstudent()
     {
-        cout<<"enter name of the student:";
+        cout<<"enter student name :";
         cin>>name;
-        cout<<"enter thec roll number of the student;
-        cin>>rno;
+        cout<<"enter student rollno :";
+        cin>>rollno;
     }
-        void displaystudent()
-        {
-        cout<<"name of the student"<<name;
-        cout<<"roll no of the student"<<rno;
-    }
-    };
-    class address
+    void displaystudent()
     {
+        cout<<"student  name :    "<<name<<endl;
+        cout<<"student rollno :"<<rollno<<endl;
+    }
+};
+class address
+{
     private:
-    char city[20];
+    string city;
     public:
-    void getadress()
+    void getaddress()
     {
-    cout<<"enter the city ";
-    cin>>city;
+        
+        cout<<"\n enter city :";
+        cin>>city;
     }
     void displayaddress()
     {
-    cout<<"city"<<city;
+        
+        cout<<"\n city    :"<<city<<endl;
     }
-    };
-    class account: public student,public address
-    {
-    private:
-    int tfee,submit,balance;
-    public:
-    void getaccount()
-    {
+
+};
+class account :public student,public address
+{
+   private:
+   int tfee,submit,balance;
+   public:
+   void getaccount()
+   {
     getstudent();
     getaddress();
-    cout<<"enter submit fee";
+    cout<<"enter total fee :";
     cin>>tfee;
-    cout<<"enter the total fee";
+    cout<<"enter submit fee :";
     cin>>submit;
-    }
-    void displayaccount()
-    {
+   }
+   void calculateaccount()
+   {
+    balance=tfee-submit;
+   }
+   void displayaccount()
+   {
     displaystudent();
     displayaddress();
-    cout<<"total fee"<<tfee;
-    cout<<"submit"<<submit;
-    balance=tfee-submit;
-    cout<<"balance fee"<<balance;
-    }
-    };
-    void main()
-    {
-    account a1;
-    a1.getaccount();
-    a1.displayaccount();
-    getch();
-    }
+    cout<<"total fee :"<<tfee<<endl;
+    cout<<"submit fee: "<<submit<<endl;
+    cout<<"balance fee :"<<balance<<endl;
+   }
+};
+int main()
+{
+    
+    account a;
+    a.getaccount();
+    a.calculateaccount();
+
+    a.displayaccount();
+}
